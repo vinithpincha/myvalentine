@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Valentine?</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -28,19 +25,16 @@
 
         .buttons {
             margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px; /* Space between buttons */
         }
 
         button {
             padding: 15px 30px;
             font-size: 1.5rem;
+            margin: 10px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.3s ease; /* Smooth growing animation */
+            transition: 0.3s;
         }
 
         #yesBtn {
@@ -63,9 +57,9 @@
 </head>
 <body>
 
-    <img id="mainImage" src="https://media.tenor.com/K2y9t0d5pC4AAAAi/mocha-bear-hearts.gif" alt="Cute bear">
+    <img id="mainImage" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWRqYzRzMzdwc2Rwajc3NXdpOHF1aDducHBzZGV1eWpwMHgwOXlqNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif" alt="Cute bear">
 
-    <h1 id="question">Will you be my Valentine?</h1>
+    <h1 id="question">Kanu, will you be my Valentine?</h1>
 
     <div class="buttons">
         <button id="yesBtn" onclick="sayYes()">Yes</button>
@@ -73,37 +67,27 @@
     </div>
 
     <script>
-        let yesScale = 1; // Tracks the size of the Yes button
-
+        // This function moves the "No" button to a random spot
         function moveButton() {
-            // 1. Teleport the No button to a random spot
-            var x = Math.random() * (window.innerWidth - 100);
-            var y = Math.random() * (window.innerHeight - 100);
+            var x = Math.random() * (window.innerWidth - 100); // Random X position
+            var y = Math.random() * (window.innerHeight - 100); // Random Y position
             
             var btn = document.getElementById('noBtn');
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
-
-            // 2. Make the Yes button grow bigger
-            yesScale += 0.2; // Increase size by 20% each time
-            document.getElementById('yesBtn').style.transform = `scale(${yesScale})`;
         }
 
+        // This function runs when they click "Yes"
         function sayYes() {
-            // Change the text and image
-            document.getElementById('question').innerText = "YAY! See you then! 💖";
+            // Change the text
+            document.getElementById('question').innerText = "YAY! See you then! Get ready for a cute date on 14th Feb '26 @ 7.30 PM 💖";
+            
+            // Change the image to a happy celebration gif
             document.getElementById('mainImage').src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
             
             // Hide the buttons
             document.getElementById('yesBtn').style.display = 'none';
             document.getElementById('noBtn').style.display = 'none';
-
-            // Trigger the Confetti explosion
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
         }
     </script>
 </body>
