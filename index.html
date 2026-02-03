@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce4ec; /* Light pink background */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevents scrollbars when button moves */
+        }
+        
+        h1 {
+            color: #d81b60;
+            font-size: 3rem;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #e91e63;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: white;
+            color: #e91e63;
+            border: 2px solid #e91e63;
+            position: absolute; /* Allows us to move it anywhere */
+        }
+
+        img {
+            max-width: 300px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="mainImage" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWRqYzRzMzdwc2Rwajc3NXdpOHF1aDducHBzZGV1eWpwMHgwOXlqNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif" alt="Cute bear">
+
+    <h1 id="question">Will you be my Valentine?</h1>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="sayYes()">Yes</button>
+        <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+    </div>
+
+    <script>
+        // This function moves the "No" button to a random spot
+        function moveButton() {
+            var x = Math.random() * (window.innerWidth - 100); // Random X position
+            var y = Math.random() * (window.innerHeight - 100); // Random Y position
+            
+            var btn = document.getElementById('noBtn');
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // This function runs when they click "Yes"
+        function sayYes() {
+            // Change the text
+            document.getElementById('question').innerText = "YAY! See you then! 💖";
+            
+            // Change the image to a happy celebration gif
+            document.getElementById('mainImage').src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
+            
+            // Hide the buttons
+            document.getElementById('yesBtn').style.display = 'none';
+            document.getElementById('noBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
